@@ -8,6 +8,7 @@ The [Narrative Clip] is a wearable lifelogging camera that snaps photos regularl
 * No outward facing API as of June 2014
 * No way to browse and edit photos apart from mobile apps with limited functionality. Very difficult to remove and modify old photos.
 * Little to no image processing and sensor processing to improve photo quality, select the "good" photos or reject the "bad" photos
+* 
 
 What this code does
 -------------------
@@ -24,6 +25,8 @@ The plan is to start with MATLAB, which allows for rapid prototyping and data vi
 
 Notes about the Narrative Clip
 -----
+This code relies on cached data stored on a PC when the Narrative Clip attempts to upload to the cloud. It assumes that you have turned this option on in your Narrative Uploader.
+
 1. Accelerometer axes
    * x goes 'up' (out of the battery indicator)
    * y goes right (opposite direction to usb port)
@@ -32,11 +35,15 @@ Notes about the Narrative Clip
    * It seems that blurry images can (mostly) be removed by just looking for large accelerations. More testing and coding to come before I am convinced though.
 
 2. The light sensor values are pretty much useless on their own other than filtering out very, very dark photos (from your pocket). The two avg parameters seem to be more useful in rejecting dark images.
+   * However I have no idea where the avg_win is located - could be a local 4x4 window, global 4x4 set of cells or sampled across the entire image.
+   * avg_readout seems to be a rounded mean of the avg_win values
 
 
 3. Filenames seem to be UTC HHMMSS and seems fairly accurate
 
 4. One can operate in "offline" mode by adding a firewall rule to Win 8.1 to stop Narrative from using the web. Seems to work so far in stopping the upload but still allowing the Narrative Clip to cache to a HDD folder. 
+
+5. The sensor data are read from the .json files, in case this isn't immediately obvious
 
 TODO
 ----
@@ -44,5 +51,10 @@ TODO
 * Object detection and recognition. Ditto for places.
 * Still can't get GPS values. May be it is hidden in the .snap files? The files seems very "random" and might be encrypted -_-
 
+References and Thanks
+---------------------
+The code uses [JSONlab] to read the .json files into MATLAB variables. 
+
 
 [Narrative Clip]:http://getnarrative.com/
+[JSONlab]:http://iso2mesh.sourceforge.net/cgi-bin/index.cgi?jsonlab/Doc
