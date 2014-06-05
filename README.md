@@ -8,7 +8,6 @@ The [Narrative Clip] is a wearable lifelogging camera that snaps photos regularl
 * No outward facing API as of June 2014
 * No way to browse and edit photos apart from mobile apps with limited functionality. Very difficult to remove and modify old photos.
 * Little to no image processing and sensor processing to improve photo quality, select the "good" photos or reject the "bad" photos
-* 
 
 What this code does
 -------------------
