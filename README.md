@@ -8,7 +8,6 @@ The [Narrative Clip] is a wearable lifelogging camera that snaps photos regularl
 * No outward facing API as of June 2014
 * No way to browse and edit photos apart from mobile apps with limited functionality. Very difficult to remove and modify old photos.
 * Little to no image processing and sensor processing to improve photo quality, select the "good" photos or reject the "bad" photos
-* 
 
 What this code does
 -------------------
@@ -47,9 +46,9 @@ This code relies on cached data stored on a PC when the Narrative Clip attempts 
 
 TODO
 ----
+* GPS data - See discussion in https://plus.google.com/111980803329569358188/posts/EBazH7gbWL6
 * Auto-rotation - Maybe using homography or similar given that we have a reliable (sort of) 3D vector?
 * Object detection and recognition. Ditto for places.
-* Still can't get GPS values. May be it is hidden in the .snap files? The files seems very "random" and might be encrypted -_-
 
 References and Thanks
 ---------------------
