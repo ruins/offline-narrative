@@ -5,8 +5,15 @@
 % Uses JSONlab:
 % http://iso2mesh.sourceforge.net/cgi-bin/index.cgi?jsonlab/Doc
 
-% TODO Image Rotate
+% -----
+% USAGE
+% -----
+% json_path should point to the \meta folder
+% I highly recommend running the code a cell at a time (%% delimited) as
+% is is probably not bug free :)
 
+
+% TODO Image Rotate
 % TODO pull more good/bad params from image processing. Look for bad
 % exposure, blocked images etc
 
@@ -75,7 +82,7 @@ dark_num = raw_num(dark_idx);
 % Manually triggered _but_ not too dark or blurry
 fav_num = raw_num(trigger & ~blurry_idx & ~dark_idx);
 
-%% Show results
+%% Show sensor data
 figure;
 plot(raw_num, bat, '.');
 title('Battery');
@@ -114,5 +121,11 @@ hold off
 title('Magnetometer XYZ');
 legend('x', 'y', 'z');
 
-% Find manually triggered images
-raw_num(trigger == true)
+%% TODO - File operations to delete images etc
+fprintf('\n\n');
+disp('Favourites (not blurry or dark)')
+fprintf('%06d.jpg\n', fav_num)
+fprintf('\n\n');
+disp('Blurry and/or Dark images - Delete?')
+fprintf('%06d.jpg\n', raw_num(blurry_idx | dark_idx));
+
